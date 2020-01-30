@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router';
+import Home from './components/shared/Home';
+import NoMatch from './components/shared/NoMatch';
+import Navbar from './components/shared/Navbar';
+import FetchUser from './components/auth/FetchUser';
+import Playlists from './components/playlists/Playlists';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <>
+    <Navbar />
+    {/* <FetchUser> */}
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/auth/spotify/callback' component={Playlists} />
+        <Route component={NoMatch} />
+      </Switch>
+    {/* </FetchUser> */}
+  </>
+)
 
 export default App;
+
