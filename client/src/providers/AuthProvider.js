@@ -6,7 +6,7 @@ export const AuthContext = React.createContext();
 export const AuthConsumer = AuthContext.Consumer;
 
 export class AuthProvider extends React.Component {
-  state = { user: null, };
+  state = { user: null, playlists: [] };
 
   spotifyLogin = () => {
     axios.get(`/api/auth/spotify/callback`)
@@ -27,11 +27,22 @@ export class AuthProvider extends React.Component {
 
     axios.post('/api/user', qs.stringify(data), config)
       .then( res => {
-        this.setState({ user: res.data })
+        this.setState({
+          user: res.data
+        }, () => {
+          this.getUserPlaylists();
+        });
       })
-      .catch( err => {
-        console.log(err)
+      .catch(console.log)
+  }
+  
+  getUserPlaylists = () => {
+    const { user } = this.state
+    axios.post('/api/user/playlists', user)
+    .then(res => {
+        this.setState({ playlists: res.data }) 
       })
+      .catch(console.log)
   }
   
   render() {

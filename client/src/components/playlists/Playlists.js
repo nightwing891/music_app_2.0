@@ -1,45 +1,56 @@
-import React, { useEffect, useContext } from 'react';
-import { AuthContext, AuthConsumer } from '../../providers/AuthProvider';
-import { Header } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { AuthConsumer } from '../../providers/AuthProvider';
+import { Header, List, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
-// const Playlists = () => {
-//   const value = useContext(AuthContext);
+class Playlists extends Component {
+  state = { }
 
-//   useEffect( () => {
-//     const data = {
-//       code: new URLSearchParams(window.location.search).get('code'),
-//     }
-
-//     value.spotifyUser(data)
-//   });
-
-//   return(
-//     <>
-//       <Header>Logged In</Header>
-//     </>
-//   )
-// }
-
-class Playlists extends React.Component {
   componentDidMount() {
     const data = {
       code: new URLSearchParams(window.location.search).get('code'),
     }
 
-
     this.props.spotifyUser(data)
+    // call to the playlist consummer function 
   }
 
   render() {
     return(
       <>
         <Header>Logged In</Header>
+        { this.props.playlists ?
+          <>
+            <p>Playlists</p>
+            <List divided relaxed>
+            { this.props.playlists.map( p => 
+              <List.Item>
+                <Link
+                  to={{
+                    pathname: `playlists/${p.id}`,
+                    state: { playlist_id: p.spotify_id, user_id: p.user_id }
+                  }}
+                >
+                  <Image size='tiny'  src={p.images[0].url} />    
+                  <List.Content>
+                    <List.Header>{p.name}</List.Header>
+                  </List.Content>
+                </Link>
+              </List.Item>
+              )
+            }
+            </List>
+          </>
+          :
+          <>
+          </>
+        }
       </>
     )
   }
 }
 
-const ConnectedPlaylists = (props) => {
+const ConnectedPlaylistsWithAuth = (props) => {
   return (
     <AuthConsumer>
       { value =>
@@ -49,4 +60,14 @@ const ConnectedPlaylists = (props) => {
   )
 }
 
-export default ConnectedPlaylists;
+// const ConnectedPlaylists = (props) => {
+//   return (
+//     <PlaylistConsumer>
+//       { value =>
+//         <ConnectedPlaylistsWithAuth {...props} {...value} />
+//       }
+//     </PlaylistConsumer>
+//   )
+// }
+
+export default ConnectedPlaylistsWithAuth;
