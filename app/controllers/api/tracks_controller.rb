@@ -1,6 +1,6 @@
 class Api::TracksController < ApplicationController
-  def index
-    user = User.find(params[:id])
+  def playlist_tracks
+    user = User.find(params[:user_id])
     playlist_id = params[:playlist_id]
 
     if user.access_token_expired?

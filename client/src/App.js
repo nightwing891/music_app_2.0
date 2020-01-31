@@ -16,7 +16,7 @@ const App = () => (
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/auth/spotify/callback' component={Playlists} />
-          <Route exact path='/playlists/:id' component={PlaylistShow} />
+          <Route exact path='/auth/spotify/playlists/:id' component={PlaylistShow} />
           <Route component={NoMatch} />
         </Switch>
       </Container>

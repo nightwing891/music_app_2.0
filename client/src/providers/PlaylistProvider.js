@@ -16,9 +16,12 @@ export class PlaylistProvider extends Component {
   }
 
   getTracks = (user_id, playlist_id) => {
-    axios.get('/api/playlists', {user_id, playlist_id})
+    axios.post('/api/playlist/tracks', {user_id, playlist_id})
       .then(res => {
-        this.setState({ tracks: res.data }) 
+        const tracks = res.data.map( t => {
+          return t.track
+        })
+        this.setState({ tracks })
       })
       .catch(console.log)
   }

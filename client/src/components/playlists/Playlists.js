@@ -28,7 +28,7 @@ class Playlists extends Component {
                 <Link
                   to={{
                     pathname: `playlists/${p.id}`,
-                    state: { playlist_id: p.spotify_id, user_id: p.user_id }
+                    state: { playlist_id: p.id, user_id: this.props.user.id }
                   }}
                 >
                   <Image size='tiny'  src={p.images[0].url} />    
