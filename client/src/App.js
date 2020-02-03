@@ -6,20 +6,19 @@ import Navbar from './components/shared/Navbar';
 import FetchUser from './components/auth/FetchUser';
 import Playlists from './components/playlists/Playlists';
 import PlaylistShow from './components/playlists/PlaylistShow';
-import { Container } from 'semantic-ui-react';
 
 const App = () => (
   <>
     <Navbar />
     {/* <FetchUser> */}
-      <Container>
+      <>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/auth/spotify/callback' component={Playlists} />
           <Route exact path='/auth/spotify/playlists/:id' component={PlaylistShow} />
           <Route component={NoMatch} />
         </Switch>
-      </Container>
+      </>
     {/* </FetchUser> */}
   </>
 )

@@ -1,14 +1,19 @@
 import React from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
+import { HomeContainer, NeonBtn, NeonTop, NeonBottom, NeonLeft, NeonRight } from '../../styledComponents/homeStyles';
 
 const Home = () => (
   <AuthConsumer>
     { value => (
-      <>
-        <button onClick={() => value.spotifyLogin()}>
+      <HomeContainer>
+        <a class='NeonBtn' onClick={() => value.spotifyLogin()}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
           Login to Spotify
-        </button>
-      </>
+        </a>
+      </HomeContainer>
     )}
   </AuthConsumer>
 )
