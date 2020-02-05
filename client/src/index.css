@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #191a1f !important;
+  color: white !important;
 }
 
 code {
@@ -24,6 +26,7 @@ code {
   overflow: hidden;
   transition: 0.2s;
   -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+  cursor: pointer;
 }
 
 .NeonBtn:hover {
