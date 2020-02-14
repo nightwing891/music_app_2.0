@@ -8,7 +8,7 @@ export class TrackProvider extends Component {
   state = { results: [], };
 
   search = (query) => {
-    axios.get(`/api/v1/tracks/search?q=${query}`)
+    axios.post(`/api/track/search`, {query})
       .then(res => {
         this.setState({ results: [...res.data]})
       })

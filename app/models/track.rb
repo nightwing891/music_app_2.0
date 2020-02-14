@@ -5,8 +5,8 @@ class Track < ApplicationRecord
     Track.new(
       spotify_id: spotify_track.id,
       name: spotify_track.name,
-      artist: spotify_track.artists[0].name,
-      image: spotify_track.album.images[0]["url"],
+      artists: spotify_track.artists[0].name,
+      album: spotify_track.album.images[0]["url"]
     )
   end
 

@@ -17,7 +17,7 @@ class Api::TracksController < ApplicationController
   end
 
   def search
-    s_tracks = RSpotify::Track.search(params[:q])
+    s_tracks = RSpotify::Track.search(params[:query])
     @tracks = s_tracks.map do |s_track|
       Track.new_from_spotify_track(s_track)
     end

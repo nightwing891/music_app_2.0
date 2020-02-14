@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     post '/user/playlists', to: 'playlists#fetch_playlists'
     post '/user', to: 'users#create'
     post '/playlist/tracks', to: 'tracks#playlist_tracks'
+    post '/track/search', to: 'tracks#search'
   end
 end
