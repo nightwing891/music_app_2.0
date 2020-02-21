@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_012835) do
     t.integer "popularity"
     t.string "artists"
     t.string "album"
+    t.string "image"
     t.bigint "playlist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

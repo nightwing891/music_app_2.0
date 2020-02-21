@@ -9,6 +9,7 @@ class CreateTracks < ActiveRecord::Migration[6.0]
       t.integer :popularity
       t.string :artists
       t.string :album
+      t.string :image
       t.belongs_to :playlist, null: false, foreign_key: true
 
       t.timestamps

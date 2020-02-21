@@ -25,6 +25,19 @@ export class PlaylistProvider extends Component {
       })
       .catch(console.log)
   }
+
+  // add cb() to clear out the form
+  addToPlaylist = (user_id, playlist_id, uri) => {
+    debugger
+    axios.post(`/api/track/add`, {user_id, playlist_id, uri})
+      .then(res => {
+        const { tracks } = this.state;
+        this.setState({ tracks: [...tracks, res.data] });
+      })
+      .catch( err => {
+        console.log(err)
+      })
+  }
   
   render() {
     return (
@@ -32,6 +45,7 @@ export class PlaylistProvider extends Component {
         ...this.state,
         getPlaylists: this.getPlaylists,
         getTracks: this.getTracks,
+        addToPlaylist: this.addToPlaylist
       }}>
         { this.props.children }
       </PlaylistContext.Provider>

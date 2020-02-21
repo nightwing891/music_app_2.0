@@ -32,7 +32,11 @@ class SearchBar extends Component {
           {
             this.props.results.length !== 0 ?
               <Segment style={{overflow: 'auto', maxHeight: 200 }}>
-                <SearchResults results={this.props.results} />
+                <SearchResults 
+                  results={this.props.results} 
+                  user_id={this.props.user_id} 
+                  playlist_id={this.props.playlist_id} 
+                />
               </Segment>
             :
             <>

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     post '/user', to: 'users#create'
     post '/playlist/tracks', to: 'tracks#playlist_tracks'
     post '/track/search', to: 'tracks#search'
+    post '/track/add', to: 'tracks#add'
   end
 end

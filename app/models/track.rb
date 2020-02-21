@@ -6,7 +6,12 @@ class Track < ApplicationRecord
       spotify_id: spotify_track.id,
       name: spotify_track.name,
       artists: spotify_track.artists[0].name,
-      album: spotify_track.album.images[0]["url"]
+      image: spotify_track.album.images[0]["url"], 
+      album: spotify_track.album.name, 
+      uri: spotify_track.uri,
+      duration_ms: spotify_track.duration_ms,
+      explicit: spotify_track.explicit,
+      popularity: spotify_track.popularity
     )
   end
 

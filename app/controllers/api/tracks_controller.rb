@@ -31,4 +31,23 @@ class Api::TracksController < ApplicationController
     end
     render json: @tracks
   end
+
+  def add
+    user = User.find(params[:user_id])
+    playlist_id = params[:playlist_id]
+
+    if user.access_token_expired?
+      user.update_token
+    end
+
+    token = user.access_token
+    header = { Authorization: "Bearer #{token}" }
+    uri = params[:uri]
+    playlists_response = RestClient.post("https://api.spotify.com/v1/playlists/#{playlist_id}/tracks", uri, header)
+
+    # find the song in the database, if its not there add to the database
+    # return the new song
+
+    render json: track
+  end
 end
