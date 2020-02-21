@@ -3,6 +3,7 @@ import { PlaylistConsumer } from '../../providers/PlaylistProvider';
 import { TrackHeadTr, TrackTable, TrackTitleTd, TrackTh, TrackTr, TrackTd, TrackImg, TrackImgTd } from '../../styledComponents/trackStyles';
 import { Container, Grid } from 'semantic-ui-react';
 import ConnectedSearchBar from '../search/SearchBar';
+import { Wrapper } from '../../styledComponents/sharedStyles';
 
 class PlaylistShow extends Component {
   state = { tracks: [] }
@@ -23,11 +24,11 @@ class PlaylistShow extends Component {
   render() {
     const { user_id, playlist_id } = this.props.location.state
     return(
-      <Container>
+      <Wrapper>
         { this.props.tracks ?
-          <Grid>
+          <Grid stackable>
             <Grid.Row>
-              <Grid.Column width={13}>
+              <Grid.Column width={12}>
                 <p>tracks</p>
                 <TrackTable>
                   <TrackHeadTr>
@@ -56,7 +57,7 @@ class PlaylistShow extends Component {
                 }
                 </TrackTable>
               </Grid.Column>
-              <Grid.Column width={3}>
+              <Grid.Column width={4}>
                 <ConnectedSearchBar user_id={user_id} playlist_id={playlist_id}  />
               </Grid.Column>
             </Grid.Row>
@@ -65,7 +66,7 @@ class PlaylistShow extends Component {
           <>
           </>
         }
-      </Container>
+      </Wrapper>
     )
   }
 }
