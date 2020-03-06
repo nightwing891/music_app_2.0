@@ -27,9 +27,9 @@ export class PlaylistProvider extends Component {
   }
 
   // add cb() to clear out the form
-  addToPlaylist = (user_id, playlist_id, uri) => {
+  addToPlaylist = (user_id, playlist_id, uri, track) => {
     debugger
-    axios.post(`/api/track/add`, {user_id, playlist_id, uri})
+    axios.post(`/api/track/add`, {user_id, playlist_id, uri, track})
       .then(res => {
         const { tracks } = this.state;
         this.setState({ tracks: [...tracks, res.data] });

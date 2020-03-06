@@ -17,6 +17,7 @@ const SearchResult = ({ name, artists, image, uri, user_id, playlist_id, track }
         </List.Content>
         <Image src={image} size='tiny' />
         <List.Content>
+          {/* TODO have the name and artist wrap if it is too long */}
           <List.Header>{name}</List.Header>
           <List.Description>
             {artists}
